@@ -61,7 +61,7 @@ must be installed on the Ansible controller.
 ----
 checkmk_site_url: ~
 ----
-URL to a CheckMk site that uses the same version as `checkmk_agent_version`. 
+URL to a CheckMk site that uses the same version as `checkmk_agent_version`.
 Must *not* end with an `/`.
 
 #Must be supplied# if `checkmk_agent_url` is not supplied by yourself.

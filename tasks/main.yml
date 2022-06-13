@@ -3,7 +3,7 @@
 
 - name: check if all variables have been set correctly
   ansible.builtin.import_tasks: assert.yml
-  run_once: yes
+  run_once: true
   delegate_to: localhost
 
 - name: Include Tasks for installing the CheckMK Agent by using the system package manager (when install is needed).

@@ -1,0 +1,23 @@
+{
+  "template": "https://github.com/JonasPammer/cookiecutter-ansible-role.git",
+  "commit": "3b400d39c04ed5f7d99a2bf913145dbcfe767ff3",
+  "checkout": null,
+  "context": {
+    "cookiecutter": {
+      "full_name": "Jonas Pammer",
+      "email": "opensource@jonaspammer.at",
+      "code_of_conduct_enforcement_contact_email": "opensource@jonaspammer.at",
+      "github_username": "JonasPammer",
+      "galaxy_name": "jonaspammer",
+      "min_ansible_version": "2.11",
+      "allow_duplicates": "no",
+      "ansible_user_needs_to_become": "True",
+      "role_name_": "checkmk-agent",
+      "role_name": "checkmk_agent",
+      "project_slug": "ansible-role-checkmk_agent",
+      "project_short_purpose": "installing checkmk's agent on a Host by using a stan",
+      "_template": "https://github.com/JonasPammer/cookiecutter-ansible-role.git"
+    }
+  },
+  "directory": null
+}

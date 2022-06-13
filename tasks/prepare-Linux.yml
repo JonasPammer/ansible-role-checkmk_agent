@@ -1,7 +1,7 @@
 - name: get installed version of checkmk agent
   ansible.builtin.shell: |
     set -o pipefail;
-    check_mk_agent | grep '^Version: ' | tr -d 'Version: '"
+    check_mk_agent | grep "^Version: " | tr -d "Version: "
   args:
     executable: /bin/bash
   register: checkmk_agent__register_agent_version_output

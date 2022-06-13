@@ -1,24 +1,6 @@
-- name: get installed version of checkmk agent
-  ansible.builtin.shell: 'check_mk_agent | grep "^Version: " | tr -d "Version: "'
-  register: checkmk_agent__register_agent_version_output
-  changed_when: false
-  check_mode: false
-
 - block:
-    - name: create temporary directory for checkmk-agent (when install is needed)
-      ansible.builtin.tempfile:
-        state: directory
-        suffix: "checkmkagent-{{ checkmk_agent_version }}"
-      register: checkmk__register_agent_tempdir
-      changed_when: false
-
-    - name: Download agent installation package  (when install is needed).
-      ansible.builtin.get_url:
-        url: "{{ checkmk_agent_url }}"
-        dest: "{{ checkmk__register_agent_tempdir.path }}/checkmkagent-{{ checkmk_agent_version }}.rpm"
-
     - name: Install agent from rpm using yum  (when install is needed).
       ansible.builtin.yum:
-        name: "{{ checkmk__register_agent_tempdir.path }}/checkmkagent-{{ checkmk_agent_version }}.rpm"
+        name: "{{ checkmk__register_agent_tempdir.path }}/{{ checkmk__tmp_filename }}"
         state: present
   when: checkmk_agent__register_agent_version_output.stdout != checkmk_agent_version

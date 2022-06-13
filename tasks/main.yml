@@ -7,7 +7,7 @@
   delegate_to: localhost
 
 - name: Import Tasks for probing and preparing Linux Installation.
-  ansible.builtin.import_tasks: "install-Linux.yml"
+  ansible.builtin.import_tasks: "prepare-Linux.yml"
   when: ansible_system == "Linux"
 
 - name: Include Tasks for installing the CheckMK Agent by using the system package manager (when install is needed).

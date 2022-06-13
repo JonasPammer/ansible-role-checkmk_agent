@@ -2,14 +2,7 @@
 # vars file of ansible-role jonaspammer.checkmk_agent
 # (tl;dr: almost not overwrite-able variables)
 
-_checkmk_agent__somevar:
-  Debian: ""
-  Debian_10: ""
-  RedHat: ""
-
-checkmk_agent__somevar: "{{
-  _checkmk_agent_somevar[ansible_distribution ~ '_' ~ ansible_distribution_major_version]|default(
-  _checkmk_agent_somevar[ansible_os_family ~ '_' ~ ansible_distribution_major_version])|default(
-  _checkmk_agent_somevar[ansible_distribution])|default(
-  _checkmk_agent_somevar[ansible_os_family])|default(
-  _checkmk_agent_somevar['default']) }}"
+_checkmk_agent_url:
+  Debian: "{{ checkmk_site_url }}/check_mk/agents/check-mk-agent_{{ checkmk_agent_version }}-1_all.deb"
+  RedHat: "{{ checkmk_site_url }}/check_mk/agents/check-mk-agent-{{ checkmk_agent_version }}-1.noarch.rpm"
+  Windows: "{{ checkmk_site_url }}/check_mk/agents/windows/check_mk_agent.msi"

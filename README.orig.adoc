@@ -56,26 +56,32 @@ must be installed on the Ansible controller.
 // Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.)
 // should be mentioned here as well.
 
-[source,yaml]
-----
-variable: default value
-----
-Description
-
 
 [source,yaml]
 ----
-variable: [OS-specific by default, see /vars directory]
+checkmk_site_url: ~
 ----
-Description
+URL to a CheckMk site that uses the same version as `checkmk_agent_version`. 
+Must *not* end with an `/`.
 
+#Must be supplied# if `checkmk_agent_url` is not supplied by yourself.
 
 [source,yaml]
 ----
-variable: [OS-specific by default, see /vars directory]
+checkmk_agent_version: 2.0.0p23
 ----
-(Debian/Ubuntu only)
-Description
+#Must be supplied#.
+
+Used to construct `checkmk_agent_url` if it is not defined.
+
+[source,yaml]
+----
+checkmk_agent_url: [OS-specific by default, see /vars directory]
+----
+URL to the CheckMk installation package.
+
+*Can* be supplied if you want to overwrite it yourself.
+
 
 
 [[public_vars]]
@@ -120,15 +126,27 @@ image:https://raw.githubusercontent.com/JonasPammer/ansible-roles/master/graphs/
 requirements.yml dependency graph of jonaspammer.checkmk_agent]
 ====
 
-.Minimum Viable Play
+
+.Minimum Viable Plays
 ====
 [source,yaml]
 ----
 roles:
-  - "jonaspammer.checkmk_agent"
+    - "checkmk-agent"
 
 vars:
-  some_var: "some_value"
+    checkmk_site_url: "http://srvcmk.intra.yoursite.com/master"
+    checkmk_agent_version: 2.0.0p16
+----
+
+[source,yaml]
+----
+roles:
+    - "checkmk-agent"
+
+vars:
+    checkmk_agent_version: 2.0.0p16
+    checkmk_agent_url: "http://srvcmk.intra.yoursite.com/master/check_mk/agents/check-mk-agent_{{ checkmk_agent_version }}-1_all.deb"
 ----
 ====
 

@@ -1,10 +1,16 @@
 ---
-# tasks file for testing that variables of ansible-role jonaspammer.checkmk_agent are set correctly
+# tasks file for testing that variables of jonaspammer.checkmk_agent are set correctly
 
-# - name: test if variable_name is set correctly
-#   ansible.builtin.assert:
-#     that:
-#       - variable_name is defined
-#       - variable_name is number
-#       - variable_name >= 0
-#     quiet: true
+- name: test if checkmk_agent_version is set correctly
+  ansible.builtin.assert:
+    that:
+      - checkmk_agent_version is defined
+      - checkmk_agent_version | type_debug in ["str", "AnsibleUnicode"]
+    quiet: yes
+
+- name: test if checkmk_agent_url is set correctly
+  ansible.builtin.assert:
+    that:
+      - checkmk_agent_url is defined
+      - checkmk_agent_url | type_debug in ["AnsibleUnsafeText"]
+    quiet: yes

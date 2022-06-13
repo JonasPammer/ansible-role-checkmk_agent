@@ -1,3 +1,13 @@
 ---
 # defaults file of ansible-role jonaspammer.checkmk_agent
 # See README.adoc for documentation. If you change a default here, also update it in the README.
+
+# as in 'checkmk_server' role
+checkmk_agent_version: 2.0.0p23
+
+checkmk_agent_url: "{{
+  _checkmk_agent_url[ansible_distribution ~ '_' ~ ansible_distribution_major_version]|default(
+  _checkmk_agent_url[ansible_os_family ~ '_' ~ ansible_distribution_major_version])|default(
+  _checkmk_agent_url[ansible_distribution])|default(
+  _checkmk_agent_url[ansible_os_family])|default(
+  _checkmk_agent_url['default']) }}"

@@ -1,0 +1,35 @@
+---
+- name: get installed version of checkmk agent through windows powershell exe info api
+  ansible.builtin.win_shell: |
+      $cmk = "C:\Program Files (x86)\check_mk\check_mk_agent.exe"
+      If (Test-Path $cmk) {
+          (Get-Item $cmk).VersionInfo.ProductVersion
+          } Else {
+          "No agent installed"}
+  register: checkmk_agent__register_windows_agent_installed
+  changed_when: checkmk_agent__register_windows_agent_installed.stdout_lines[0] != checkmk_agent_version
+
+- block:
+    - name: create temporary directory for checkmk-agent (when install is needed)
+      ansible.builtin.win_tempfile:
+        state: directory
+        suffix: "checkmkagent-{{ checkmk_agent_version }}"
+      register: checkmk__register_agent_tempdir
+      changed_when: false
+
+    - name: Download agent installation package  (when install is needed).
+      ansible.builtin.win_get_url:
+          url: "{{ checkmk_agent_url }}"
+          dest: "{{ checkmk__register_agent_tempdir.path }}/checkmkagent-{{ checkmk_agent_version }}.msi"
+
+    - name: Install agent from msi  (when install is needed).
+      ansible.builtin.win_package:
+          path: "{{ checkmk__register_agent_tempdir.path }}/checkmkagent-{{ checkmk_agent_version }}.msi"
+          state: present
+          wait: True
+  when: checkmk_agent__register_windows_agent_installed.changed
+
+- name: Install agent config.
+  ansible.builtin.win_template:
+    src: "check_mk.jinja2.ini"
+    dest: "C:\\Program Files (x86)\\check_mk\\check_mk.ini"

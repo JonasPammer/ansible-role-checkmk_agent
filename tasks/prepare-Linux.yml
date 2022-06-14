@@ -18,6 +18,6 @@
 
     - name: Download agent installation package  (when install is needed).
       ansible.builtin.get_url:
-      url: "{{ checkmk_agent_url }}"
-      dest: "{{ checkmk__register_agent_tempdir.path }}/{{ checkmk__tmp_filename }}"
+        url: "{{ checkmk_agent_url }}"
+        dest: "{{ checkmk__register_agent_tempdir.path }}/{{ checkmk__tmp_filename }}"
   when: checkmk_agent__register_agent_version_output.stdout != checkmk_agent_version

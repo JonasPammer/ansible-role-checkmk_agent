@@ -1,3 +1,4 @@
+---
 - block:
     - name: Install agent from deb using APT  (when install is needed).
       ansible.builtin.apt:

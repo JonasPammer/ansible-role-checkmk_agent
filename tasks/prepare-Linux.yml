@@ -1,3 +1,4 @@
+---
 - name: get installed version of checkmk agent
   ansible.builtin.shell: 'check_mk_agent | grep "^Version: " | tr -d "Version: "' # noqa risky-shell-pipe
   args:

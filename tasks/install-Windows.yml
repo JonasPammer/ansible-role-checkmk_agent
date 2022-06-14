@@ -26,7 +26,7 @@
       ansible.builtin.win_package:
         path: "{{ checkmk__register_agent_tempdir.path }}/checkmkagent-{{ checkmk_agent_version }}.msi"
         state: present
-        wait: True
+        wait: true
   when: checkmk_agent__register_windows_agent_installed.changed
 
 - name: Install agent config.

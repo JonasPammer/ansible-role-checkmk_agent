@@ -1,3 +1,4 @@
+---
 - block:
     - name: Install agent from rpm using yum  (when install is needed).
       ansible.builtin.yum:

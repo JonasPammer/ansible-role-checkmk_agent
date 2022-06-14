@@ -3,7 +3,8 @@
   hosts: all
 
   vars:
-    checkmk_site_url: "http://srvcmk.intra.yoursite.com/master"
+    checkmk_agent_version: "{{ checkmk_server_version }}"
 
   roles:
+    - role: jonaspammer.checkmk_server
     - role: "ansible-role-checkmk_agent"

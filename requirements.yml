@@ -2,7 +2,7 @@
 roles:
   - name: jonaspammer.bootstrap
   - name: jonaspammer.checkmk_server
-#  - name: jonaspammer.core_dependencies
+  - name: jonaspammer.core_dependencies
 
 # NOTE: list all collections used here (even if included in `ansible`)
 collections:

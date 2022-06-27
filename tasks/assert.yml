@@ -5,12 +5,12 @@
   ansible.builtin.assert:
     that:
       - checkmk_agent_version is defined
-      - checkmk_agent_version | type_debug in ["str", "AnsibleUnicode"]
+      - checkmk_agent_version is string
     quiet: true
 
 - name: test if checkmk_agent_url is set correctly
   ansible.builtin.assert:
     that:
       - checkmk_agent_url is defined
-      - checkmk_agent_url | type_debug in ["AnsibleUnsafeText"]
+      - checkmk_agent_url is string
     quiet: true

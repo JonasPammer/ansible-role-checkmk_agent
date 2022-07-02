@@ -1,8 +1,9 @@
 ---
 roles:
   - name: jonaspammer.bootstrap
-  - name: jonaspammer.checkmk_server
   - name: jonaspammer.core_dependencies
+  - name: jonaspammer.checkmk_server
+    __not_mandatory_to_role_itself: true # used by JonasPammer/ansible-roles
 
 # NOTE: list all collections used here (even if included in `ansible`)
 collections:

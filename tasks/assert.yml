@@ -1,5 +1,6 @@
 ---
-# tasks file for testing that variables of jonaspammer.checkmk_agent are set correctly
+# tasks file for testing that variables of ansible-role jonaspammer.checkmk_agent are set correctly
+# https://docs.ansible.com/ansible/latest/user_guide/playbooks_tests.html
 
 - name: test if checkmk_agent_version is set correctly
   ansible.builtin.assert:

@@ -68,11 +68,33 @@ Must *not* end with an `/`.
 
 [source,yaml]
 ----
-checkmk_agent_version: 2.0.0p25
+checkmk_agent_version: "2.0.0p25"
 ----
 #Must be supplied#.
 
 Used to construct `checkmk_agent_url` if it is not defined.
+
+Version of CheckMK RAW edition to install.
+
+[NOTE]
+====
+The default value of these variables is semi-automatically being updated
+to the latest non-beta CheckMk RAW v2 Release through the help of a CI Workflow
+and some accompanying python scripts which can be found in `__scripts` of my
+https://github.com/JonasPammer/ansible-role-checkmk_server[`ansible-role-checkmk_server`].
+
+Every said update is accompanied with a new release of at least a minor version bump.
+See <<changelog>> for an overview.
+
+[NOTE]
+=====
+Even though you could pin the version of this role to get a pinned version of checkmk,
+I recommend that you install the latest version of this role and
+change these variables yourself instead as I do not backport
+actual patches made to this role into older versions
+(if that is even possible).
+=====
+====
 
 [source,yaml]
 ----

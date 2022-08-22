@@ -86,7 +86,7 @@ Must *not* end with an `/`.
 
 [source,yaml]
 ----
-checkmk_agent_version: "2.0.0p26"
+checkmk_agent_version: "2.0.0p27"
 ----
 #Must be supplied#.
 

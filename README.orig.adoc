@@ -85,6 +85,7 @@ https://github.com/JonasPammer/ansible-role-checkmk_server[`ansible-role-checkmk
 
 Every said update is accompanied with a new release of at least a minor version bump.
 See <<changelog>> for an overview.
+====
 
 [NOTE]
 =====
@@ -94,7 +95,6 @@ change these variables yourself instead as I do not backport
 actual patches made to this role into older versions
 (if that is even possible).
 =====
-====
 
 [source,yaml]
 ----

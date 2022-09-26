@@ -18,6 +18,7 @@ Below you can find information on…
     galaxy_info:
       role_name: "checkmk_agent"
       description: "An Ansible role for installing checkmk's agent on a Host (Linux and Windows) by using a standard installation package."
+      standalone: true
 
       author: "jonaspammer"
       license: "MIT"

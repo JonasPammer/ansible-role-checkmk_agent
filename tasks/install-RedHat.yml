@@ -1,7 +1,7 @@
 ---
-- block:
+- when: checkmk_agent__register_agent_version_output.stdout != checkmk_agent_version
+  block:
     - name: Install agent from rpm using yum  (when install is needed).
       ansible.builtin.yum:
         name: "{{ checkmk__register_agent_tempdir.path }}/{{ checkmk__tmp_filename }}"
         state: present
-  when: checkmk_agent__register_agent_version_output.stdout != checkmk_agent_version

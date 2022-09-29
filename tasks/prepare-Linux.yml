@@ -20,3 +20,4 @@
       ansible.builtin.get_url:
         url: "{{ checkmk_agent_url }}"
         dest: "{{ checkmk__register_agent_tempdir.path }}/{{ checkmk__tmp_filename }}"
+        mode: u=rwx,g=r,o=r

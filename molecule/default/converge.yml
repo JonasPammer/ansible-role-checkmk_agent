@@ -6,5 +6,5 @@
     checkmk_agent_version: "{{ checkmk_server_version }}"
 
   roles:
-    - role: jonaspammer.checkmk_server
-    - role: "ansible-role-checkmk_agent"
+    - name: jonaspammer.checkmk_server
+    - name: "ansible-role-checkmk_agent"

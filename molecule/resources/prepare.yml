@@ -7,3 +7,4 @@
   roles:
     - name: jonaspammer.bootstrap
     - name: jonaspammer.core_dependencies
+    - name: jonaspammer.checkmk_server

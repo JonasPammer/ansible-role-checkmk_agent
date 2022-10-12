@@ -194,6 +194,7 @@ which sources its soft dependencies from `requirements.yml`:
   roles:
     - name: jonaspammer.bootstrap
     - name: jonaspammer.core_dependencies
+    - name: jonaspammer.checkmk_server
 ----
 
 The following diagram is a compilation of the "soft dependencies" of this role

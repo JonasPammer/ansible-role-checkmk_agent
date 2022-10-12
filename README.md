@@ -124,6 +124,7 @@ The machine needs to be prepared. In CI, this is done in `molecule/resources/pre
       roles:
         - name: jonaspammer.bootstrap
         - name: jonaspammer.core_dependencies
+        - name: jonaspammer.checkmk_server
 
 The following diagram is a compilation of the "soft dependencies" of this role as well as the recursive tree of their soft dependencies.
 

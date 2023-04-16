@@ -5,6 +5,6 @@
   gather_facts: false
 
   roles:
-    - name: jonaspammer.bootstrap
-    - name: jonaspammer.core_dependencies
-    - name: jonaspammer.checkmk_server
+    - role: jonaspammer.bootstrap
+    - role: jonaspammer.core_dependencies
+    - role: jonaspammer.checkmk_server

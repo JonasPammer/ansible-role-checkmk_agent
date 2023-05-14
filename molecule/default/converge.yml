@@ -1,9 +1,6 @@
 ---
 - name: Converge
-  hosts: all
-
-  vars:
-    checkmk_agent_version: "{{ checkmk_server_version }}"
+  hosts: all,!checkmk_server
 
   roles:
     - role: "ansible-role-checkmk_agent"

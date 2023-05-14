@@ -67,7 +67,7 @@ URL to a CheckMk site that uses the same version as `checkmk_agent_version`. Mus
 
 _Must be supplied_ if `checkmk_agent_url` is not supplied by yourself.
 
-    checkmk_agent_version: "2.0.0p27"
+    checkmk_agent_version: "2.0.0p28"
 
 _Must be supplied_.
 

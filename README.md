@@ -127,7 +127,16 @@ The machine needs to be prepared. In CI, this is done in `molecule/resources/pre
 
     ---
     - name: prepare
-      hosts: all
+      hosts: all,!checkmk_server
+      become: true
+      gather_facts: false
+
+      roles:
+        - role: jonaspammer.bootstrap
+        - role: jonaspammer.core_dependencies
+
+    - name: prepare checkmk_server
+      hosts: checkmk_server
       become: true
       gather_facts: false
 

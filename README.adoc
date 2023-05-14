@@ -196,7 +196,16 @@ which sources its soft dependencies from `requirements.yml`:
 ----
 ---
 - name: prepare
-  hosts: all
+  hosts: all,!checkmk_server
+  become: true
+  gather_facts: false
+
+  roles:
+    - role: jonaspammer.bootstrap
+    - role: jonaspammer.core_dependencies
+
+- name: prepare checkmk_server
+  hosts: checkmk_server
   become: true
   gather_facts: false
 

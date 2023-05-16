@@ -2,5 +2,8 @@
 - name: Converge
   hosts: all,!checkmk-server
 
+  vars:
+    checkmk_site_url: "http://checkmk-server/main"
+
   roles:
     - role: "ansible-role-checkmk_agent"

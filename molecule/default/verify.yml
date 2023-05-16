@@ -1,6 +1,6 @@
 ---
 - name: output some generally helpful debug information about the provisioned machine
-  hosts: all,!checkmk_server
+  hosts: all,!checkmk-server
   become: true
   gather_facts: true
 
@@ -10,6 +10,6 @@
 
 ### Actual Role Verification Tasks:
 - name: Verify
-  hosts: all,!checkmk_server
+  hosts: all,!checkmk-server
 
   tasks:

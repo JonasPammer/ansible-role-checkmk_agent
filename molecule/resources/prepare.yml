@@ -1,6 +1,6 @@
 ---
 - name: prepare
-  hosts: all,!checkmk_server
+  hosts: all,!checkmk-server
   become: true
   gather_facts: false
 
@@ -10,8 +10,8 @@
 
 # NOTE: only needed for testing!
 #       this play is not needed for prepararation of checkmk_agent provisioning :)
-- name: prepare checkmk_server
-  hosts: checkmk_server
+- name: prepare checkmk-server
+  hosts: checkmk-server
   become: true
   gather_facts: false
 

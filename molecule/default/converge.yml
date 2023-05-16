@@ -1,6 +1,6 @@
 ---
 - name: Converge
-  hosts: all,!checkmk_server
+  hosts: all,!checkmk-server
 
   roles:
     - role: "ansible-role-checkmk_agent"

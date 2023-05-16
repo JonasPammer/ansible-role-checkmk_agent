@@ -127,7 +127,7 @@ The machine needs to be prepared. In CI, this is done in `molecule/resources/pre
 
     ---
     - name: prepare
-      hosts: all,!checkmk_server
+      hosts: all,!checkmk-server
       become: true
       gather_facts: false
 
@@ -137,8 +137,8 @@ The machine needs to be prepared. In CI, this is done in `molecule/resources/pre
 
     # NOTE: only needed for testing!
     #       this play is not needed for prepararation of checkmk_agent provisioning :)
-    - name: prepare checkmk_server
-      hosts: checkmk_server
+    - name: prepare checkmk-server
+      hosts: checkmk-server
       become: true
       gather_facts: false
 
@@ -151,13 +151,15 @@ The following diagram is a compilation of the "soft dependencies" of this role a
 
 ![requirements.yml dependency graph of jonaspammer.checkmk_agent](https://raw.githubusercontent.com/JonasPammer/ansible-roles/master/graphs/dependencies_checkmk_agent.svg)
 
+    ---
     roles:
       - role: jonaspammer.checkmk_agent
 
     vars:
-      checkmk_site_url: "http://srvcmk.intra.yoursite.com/master"
       checkmk_agent_version: 2.0.0p25
+      checkmk_site_url: "http://srvcmk.intra.yoursite.com/master"
 
+    ---
     roles:
       - role: jonaspammer.checkmk_agent
 

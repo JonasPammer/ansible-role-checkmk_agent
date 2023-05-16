@@ -13,3 +13,13 @@
   hosts: all,!checkmk-server
 
   tasks:
+    - name: Execute check_mk_agent.
+      ansible.builtin.command: "check_mk_agent"
+      register: checkmk_agent__register_command
+
+    - name: Assert check_mk_agent output.
+      ansible.builtin.assert:
+        that:
+          - "'<<<check_mk>>>' in checkmk_agent__register_command.stdout"
+          - "'check_mk.socket loaded active listening' in checkmk_agent__register_command.stdout"
+        quiet: true

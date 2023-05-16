@@ -181,16 +181,18 @@ requirements.yml dependency graph of jonaspammer.checkmk_agent]
 ====
 [source,yaml]
 ----
+---
 roles:
   - role: jonaspammer.checkmk_agent
 
 vars:
-  checkmk_site_url: "http://srvcmk.intra.yoursite.com/master"
   checkmk_agent_version: 2.0.0p25
+  checkmk_site_url: "http://srvcmk.intra.yoursite.com/master"
 ----
 
 [source,yaml]
 ----
+---
 roles:
   - role: jonaspammer.checkmk_agent
 

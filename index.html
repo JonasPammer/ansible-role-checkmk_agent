@@ -832,7 +832,18 @@ which sources its soft dependencies from <code>requirements.yml</code>:</p>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="yaml"><span class="nn">---</span>
 <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">prepare</span>
-  <span class="na">hosts</span><span class="pi">:</span> <span class="s">all</span>
+  <span class="na">hosts</span><span class="pi">:</span> <span class="s">all,!checkmk-server</span>
+  <span class="na">become</span><span class="pi">:</span> <span class="kc">true</span>
+  <span class="na">gather_facts</span><span class="pi">:</span> <span class="kc">false</span>
+
+  <span class="na">roles</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">role</span><span class="pi">:</span> <span class="s">jonaspammer.bootstrap</span>
+    <span class="pi">-</span> <span class="na">role</span><span class="pi">:</span> <span class="s">jonaspammer.core_dependencies</span>
+
+<span class="c1"># NOTE: only needed for testing!</span>
+<span class="c1">#       this play is not needed for prepararation of checkmk_agent provisioning :)</span>
+<span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">prepare checkmk-server</span>
+  <span class="na">hosts</span><span class="pi">:</span> <span class="s">checkmk-server</span>
   <span class="na">become</span><span class="pi">:</span> <span class="kc">true</span>
   <span class="na">gather_facts</span><span class="pi">:</span> <span class="kc">false</span>
 
@@ -858,17 +869,19 @@ as well as the recursive tree of their soft dependencies.</p>
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="yaml"><span class="na">roles</span><span class="pi">:</span>
+<pre class="rouge highlight"><code data-lang="yaml"><span class="nn">---</span>
+<span class="na">roles</span><span class="pi">:</span>
   <span class="pi">-</span> <span class="na">role</span><span class="pi">:</span> <span class="s">jonaspammer.checkmk_agent</span>
 
 <span class="na">vars</span><span class="pi">:</span>
-  <span class="na">checkmk_site_url</span><span class="pi">:</span> <span class="s2">"</span><span class="s">http://srvcmk.intra.yoursite.com/master"</span>
-  <span class="na">checkmk_agent_version</span><span class="pi">:</span> <span class="s">2.0.0p25</span></code></pre>
+  <span class="na">checkmk_agent_version</span><span class="pi">:</span> <span class="s">2.0.0p25</span>
+  <span class="na">checkmk_site_url</span><span class="pi">:</span> <span class="s2">"</span><span class="s">http://srvcmk.intra.yoursite.com/master"</span></code></pre>
 </div>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="yaml"><span class="na">roles</span><span class="pi">:</span>
+<pre class="rouge highlight"><code data-lang="yaml"><span class="nn">---</span>
+<span class="na">roles</span><span class="pi">:</span>
   <span class="pi">-</span> <span class="na">role</span><span class="pi">:</span> <span class="s">jonaspammer.checkmk_agent</span>
 
 <span class="na">vars</span><span class="pi">:</span>
@@ -1561,7 +1574,7 @@ SOFTWARE.</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-05-12 09:22:30 UTC
+Last updated 2023-05-16 09:30:21 UTC
 </div>
 </div>
 </body>

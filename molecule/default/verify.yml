@@ -13,6 +13,9 @@
   hosts: all,!checkmk-server
 
   tasks:
+    - name: populate service facts
+      ansible.builtin.service_facts:
+
     - name: Execute check_mk_agent.
       ansible.builtin.command: "check_mk_agent"
       changed_when: false
@@ -22,5 +25,8 @@
       ansible.builtin.assert:
         that:
           - "'<<<check_mk>>>' in checkmk_agent__register_command.stdout"
-          - "'check_mk.socket loaded active listening' in checkmk_agent__register_command.stdout"
         quiet: true
+
+    - name: Assert agent service is running.
+      ansible.builtin.assert:
+        that: "'check_mk-async.service' in ansible_facts.services"

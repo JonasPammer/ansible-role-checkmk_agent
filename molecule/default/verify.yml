@@ -30,3 +30,15 @@
     - name: Assert agent service is running.
       ansible.builtin.assert:
         that: "'check_mk-async.service' in ansible_facts.services"
+
+    - name: wait 30s for port 6556
+      ansible.builtin.wait_for:
+        port: 6556
+        connect_timeout: 30
+      register: checkmk_agent__register_waitfor_port
+
+    - name: Assert Agent Service is listening on port 6556.
+      ansible.builtin.assert:
+        that: |
+          (checkmk_agent__register_waitfor_port.port == 6556) and
+          (checkmk_agent__register_waitfor_port.state == 'started')

@@ -1,7 +1,7 @@
 ---
 galaxy_info:
   role_name: "checkmk_agent"
-  description: "An Ansible role for installing checkmk's agent on a Host (Linux and Windows) by using a standard installation package."
+  description: "Deprecated in favor of the official checkmk_agent role."
   standalone: true
 
   author: "jonaspammer"
